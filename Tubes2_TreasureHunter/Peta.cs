@@ -12,12 +12,6 @@ namespace Tubes2_TreasureHunter
 {
     internal class Peta
     {
-        public Peta() {
-            List<List<Cell>> map = new List<List<Cell>>();
-
-
-        }   
-
         /*
          * Attribute:
          * map: List<List<Cell>>
@@ -25,6 +19,11 @@ namespace Tubes2_TreasureHunter
          */
         private List<List<Cell>> map;
         private Cell start;
+
+        public Peta() {
+            map = new List<List<Cell>>();
+        }   
+
         public Cell Start
         {
             get { return start; } 
@@ -102,8 +101,8 @@ namespace Tubes2_TreasureHunter
             {
                 foreach (Cell cell in line)
                     Console.Write($" {cell.Type} ");
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
 
 

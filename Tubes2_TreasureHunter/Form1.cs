@@ -15,16 +15,14 @@ namespace Tubes2_TreasureHunter
         {
             InitializeComponent();
             RouteFinder routeFinder = new BFS();
-            Peta test = new Peta();
-            test.readFrom("test.txt");
+            //Peta test = new Peta();
+            //test.readFrom("test.txt");
+            //test.PrintPeta();
             
-            //routeFinder.readFrom("test.txt");
-            //routeFinder.Solve();
-            //routeFinder.Solusi.PrintRoute();
+            routeFinder.readFrom("test.txt");
+            routeFinder.PetaAccessor.PrintPeta();
+            routeFinder.Solve();
+            routeFinder.Solusi.PrintRoute();
         }
-
-        
     }
-
-    
 }
