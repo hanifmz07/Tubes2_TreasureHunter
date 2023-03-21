@@ -8,6 +8,24 @@ namespace Tubes2_TreasureHunter
 {
     internal class Cell
     {
+        public Cell(char c)
+        {
+            switch (c)
+            {
+                case 'K':
+                    type = 0;
+                    break;
+                case 'X':
+                    type = 1;
+                    break;
+                case 'R':
+                    type = 2;
+                    break;
+                case 'T':
+                    type = 3;
+                    break;
+            }
+        }
         private int x;
         public int X
         {
@@ -27,6 +45,13 @@ namespace Tubes2_TreasureHunter
         {
             get { return accessed; }
             set { accessed = value; }
+        }
+
+        private int numAccessed;
+        public int NumAccesed
+        {
+            get { return numAccessed; }
+            set { numAccessed = value; }
         }
 
         private int type;

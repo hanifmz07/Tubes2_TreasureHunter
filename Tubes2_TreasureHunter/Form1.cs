@@ -14,8 +14,13 @@ namespace Tubes2_TreasureHunter
         public Form1()
         {
             InitializeComponent();
-            TxtRead temp = new TxtRead("test.txt");
+            RouteFinder routeFinder = new BFS();
+            Peta test = new Peta();
+            test.readFrom("test.txt");
             
+            //routeFinder.readFrom("test.txt");
+            //routeFinder.Solve();
+            //routeFinder.Solusi.PrintRoute();
         }
 
         
