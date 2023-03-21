@@ -1,0 +1,11 @@
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\bin\Debug\Tubes2_TreasureHunter.exe.config
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\bin\Debug\Tubes2_TreasureHunter.exe
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\bin\Debug\Tubes2_TreasureHunter.pdb
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.csproj.AssemblyReference.cache
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.csproj.SuggestedBindingRedirects.cache
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.Form1.resources
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.Properties.Resources.resources
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.csproj.GenerateResource.cache
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.csproj.CoreCompileInputs.cache
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.exe
+D:\Kuliah\Semester 4\STIMA\TUBES\Tubes2\Tubes2_TreasureHunter\Tubes2_TreasureHunter\Tubes2_TreasureHunter\obj\Debug\Tubes2_TreasureHunter.pdb
