@@ -8,8 +8,10 @@ namespace Tubes2_TreasureHunter
 {
     internal class Cell
     {
-        public Cell(char c)
+        public Cell(char c, int _x, int _y)
         {
+            this.x = _x;
+            this.y = _y;
             switch (c)
             {
                 case 'K':
@@ -25,6 +27,12 @@ namespace Tubes2_TreasureHunter
                     type = 3;
                     break;
             }
+        }
+        public Cell(Cell other)
+        {
+            this.x = other.x;
+            this.y = other.y;
+            this.type = other.type;
         }
         private int x;
         public int X
@@ -72,6 +80,10 @@ namespace Tubes2_TreasureHunter
         {
             get { return precedence; } 
             set { precedence = value; }
+        }
+        public void PrintCell()
+        {
+            Console.Write($" <{x},{y}> ");
         }
     }
 

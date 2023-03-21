@@ -23,7 +23,7 @@ namespace Tubes2_TreasureHunter
             solusi = new Route();
         }
         public Route Solusi { get { return solusi; } }
-        public abstract void Solve();
+        public abstract void Solve(bool TSP);
         public void readFrom(string input)
         {
             peta.readFrom(input);

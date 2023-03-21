@@ -9,7 +9,7 @@ namespace Tubes2_TreasureHunter
     internal class DFS : RouteFinder
     {
 
-        public override void Solve()
+        public override void Solve(bool TSP)
         {
 
         }

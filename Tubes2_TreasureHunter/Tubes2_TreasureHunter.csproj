@@ -49,6 +49,7 @@
     <Compile Include="BFS.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="DFS.cs" />
+    <Compile Include="Exception.cs" />
     <Compile Include="Peta.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="RouteFinder.cs" />

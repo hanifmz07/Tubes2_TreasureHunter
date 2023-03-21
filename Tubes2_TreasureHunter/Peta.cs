@@ -22,6 +22,7 @@ namespace Tubes2_TreasureHunter
 
         public Peta() {
             map = new List<List<Cell>>();
+            numTreasure = 0;
         }   
 
         public Cell Start
@@ -39,44 +40,75 @@ namespace Tubes2_TreasureHunter
         }
         public void readFrom(string file)
         {
-            
 
-            Console.WriteLine("Hello");
-            string[] lines = File.ReadAllLines(file);
-
-            foreach (string line in lines)
+            try
             {
-                List<Cell> row = new List<Cell>();
-                for (int i = 0; i < line.Length; i++)
+                string[] lines = File.ReadAllLines(file);
+                int numx;
+                int size = 0;
+                int numy = 0;
+                bool first = true;
+                foreach (string line in lines)
                 {
-                    if (line[i] == 'K' || line[i] == 'T' || line[i] == 'R' || line[i] == 'X')
+                    List<Cell> row = new List<Cell>();
+                    numx = 0;
+                    for (int i = 0; i < line.Length; i++)
                     {
-                        Cell item = new Cell(line[i]);
-                        row.Add(item);
-                        
+
+                        if (line[i] == 'K' || line[i] == 'T' || line[i] == 'R' || line[i] == 'X')
+                        {
+
+                            Cell item = new Cell(line[i], numx, numy);
+                            row.Add(item);
+                            numx++;
+                            if (line[i] == 'T')
+                            {
+                                numTreasure++;
+                            }
+                            if (line[i] == 'K')
+                            {
+                                start = item;
+                            }
+                        }
+                        else if (line[i] == ' ')
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            throw (new InvalidCharacterException());
+                        }
+
+
                     }
-                    else if (line[i] == ' ')
+                    map.Add(row);
+                    numy++;
+                    if (first)
                     {
-                        continue;
+                        size = numx;
+                        first = false;
                     }
                     else
                     {
-                        //invalid, throw exception
+                        if(size!=numx)
+                        {
+                            throw new RowInconsistentException();
+                        }
                     }
-
-
                 }
-                map.Add(row);
+            }catch (Exception ex) 
+            { 
+                
             }
         }
 
         public Cell GetValue(int x, int y)
         {
-            return map[x][y];
+            return map[y][x];
         }
         public void SetValue(int x, int y, Cell other)
         {
-            map[x][y] = other;
+            map[y][x] = other;
         }
         public Cell this[int x, int y]
         {
@@ -102,6 +134,34 @@ namespace Tubes2_TreasureHunter
                 foreach (Cell cell in line)
                     Console.Write($" {cell.Type} ");
                 Console.WriteLine();
+            }
+        }
+
+        public void PrintPetaCoor()
+        {
+            foreach (List<Cell> line in map)
+            {
+                foreach (Cell cell in line)
+                    Console.Write($" <{cell.X},{cell.Y}> ");
+                Console.WriteLine();
+            }
+        }
+
+        public void Copy(Peta other)
+        {
+            map.Clear();
+            Start = other.Start;
+            numTreasure = other.numTreasure;
+            foreach( List<Cell> row in other.map)
+            {
+                List<Cell> temp = new List<Cell>();
+
+                foreach(Cell cell in row)
+                {
+                    Cell tempCell = new Cell(cell);
+                    temp.Add(tempCell);
+                }
+                map.Add(temp);
             }
         }
 

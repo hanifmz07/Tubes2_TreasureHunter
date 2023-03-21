@@ -20,8 +20,10 @@ namespace Tubes2_TreasureHunter
             //test.PrintPeta();
             
             routeFinder.readFrom("test.txt");
+            
+            routeFinder.Solve(false) ;
             routeFinder.PetaAccessor.PrintPeta();
-            routeFinder.Solve();
+            Console.Write("\nRute: ");
             routeFinder.Solusi.PrintRoute();
         }
     }

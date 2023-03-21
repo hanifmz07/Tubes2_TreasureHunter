@@ -14,12 +14,33 @@ namespace Tubes2_TreasureHunter
         
         
         }
+        public Route(Route other)
+        {
+            jalur = new List<Cell>();
+            for(int i = 0; i < other.jalur.Count; i++)
+            {
+                jalur.Add(other.jalur[i]);
+            }
+        }
+        public void Copy(Route other)
+        {
+            jalur.Clear();
+            for (int i = 0; i < other.jalur.Count; i++)
+            {
+                jalur.Add(other.jalur[i]);
+            }
+        }
         public Cell this[int x]
         {
             get { return jalur[x]; }
             set { jalur[x] = value; }
 
         }
+
+        
+
+
+
         public void AddCell(Cell cell)
         {
             jalur.Add(cell);
@@ -27,10 +48,13 @@ namespace Tubes2_TreasureHunter
 
         public void PrintRoute()
         {
-            foreach(Cell cell in jalur)
+            
+            foreach (Cell cell in jalur)
             {
-                Console.Write($" <{cell.X}, {cell.Y}> ");
+                cell.PrintCell();
+                
             }
+            Console.WriteLine(" ");
         }
     }
 }
