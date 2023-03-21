@@ -1,7 +1,4 @@
-K X X X X X
-R R X X X X
-R R R X X X
-R R R R X X
-R R R R R X
-R R R R R T
-X X X X
+KRRR
+XRXT
+XTRR
+XRXX

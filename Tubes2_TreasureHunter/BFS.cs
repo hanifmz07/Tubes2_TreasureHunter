@@ -20,6 +20,7 @@ namespace Tubes2_TreasureHunter
         public override void Solve(bool TSP)
         {
             Peta a = new Peta();
+            bool repeat = TSP;
             a.Copy(peta);
             queue = new Queue<(Cell,Route)>();
             queue.Enqueue((a.Start, new Route()));
@@ -42,10 +43,26 @@ namespace Tubes2_TreasureHunter
                     //empty queue
                     a.Inaccess();
                     if(count <= 0) {
-                        solusi.Copy(temp);
-                        //accessing.Item2.PrintRoute();
-                        //solusi.PrintRoute();
-                        queue.Clear();
+                        
+                        if (repeat)
+                        {
+                            count++;
+                            a[peta.Start.X, peta.Start.Y].Type = 3;
+                            a[accessing.Item1.X, accessing.Item1.Y].Type = 0;
+                            a[a.Start.X, a.Start.Y].Type = 2;
+                            a.Start = a[accessing.Item1.X, accessing.Item1.Y];
+                            repeat = false;
+                            Console.WriteLine("Masuk");
+                            queue.Clear();
+                            queue.Enqueue((a.Start, accessing.Item2));
+                        }
+                        else
+                        {
+                            solusi.Copy(temp);
+                            //accessing.Item2.PrintRoute();
+                            //solusi.PrintRoute();
+                            queue.Clear();
+                        }
                     }
                     else
                     {
