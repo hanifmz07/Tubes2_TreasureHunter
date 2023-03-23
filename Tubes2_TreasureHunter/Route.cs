@@ -36,11 +36,6 @@ namespace Tubes2_TreasureHunter
             set { jalur[x] = value; }
 
         }
-
-        
-
-
-
         public void AddCell(Cell cell)
         {
             jalur.Add(cell);
