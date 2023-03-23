@@ -8,10 +8,12 @@ namespace Tubes2_TreasureHunter
 {
     internal class DFS : RouteFinder
     {
+        private Peta dynamic_peta;
         public DFS()
         {
             peta = new Peta();
             solusi = new Route();
+            dynamic_peta = new Peta();
         }
         private Stack<(Cell, Route)> stack;
 
@@ -19,11 +21,10 @@ namespace Tubes2_TreasureHunter
 
         public override void Solve(bool TSP)
         {
-            Peta a = new Peta();
             bool repeat = TSP;
-            a.Copy(peta);
+            dynamic_peta.Copy(peta);
             stack = new Stack<(Cell, Route)>();
-            stack.Push((a.Start, new Route()));
+            stack.Push((dynamic_peta.Start, new Route()));
             int count = peta.NumTreasure;
 
             while (count > 0 && stack.Count > 0)
@@ -34,24 +35,24 @@ namespace Tubes2_TreasureHunter
                 if (accessing.Item1.Type == 3)
                 {
                     count--;
-                    a[accessing.Item1.X, accessing.Item1.Y].Type = 0;
-                    a[a.Start.X, a.Start.Y].Type = 2;
-                    a.Start = a[accessing.Item1.X, accessing.Item1.Y];
+                    dynamic_peta[accessing.Item1.X, accessing.Item1.Y].Type = 0;
+                    dynamic_peta[dynamic_peta.Start.X, dynamic_peta.Start.Y].Type = 2;
+                    dynamic_peta.Start = dynamic_peta[accessing.Item1.X, accessing.Item1.Y];
 
-                    a.Inaccess();
+                    dynamic_peta.Inaccess();
                     if (count <= 0)
                     {
                         if (repeat)
                         {
                             count++;
-                            a[peta.Start.X, peta.Start.Y].Type = 3;
-                            a[accessing.Item1.X, accessing.Item1.Y].Type = 0;
-                            a[a.Start.X, a.Start.Y].Type = 2;
-                            a.Start = a[accessing.Item1.X, accessing.Item1.Y];
+                            dynamic_peta[peta.Start.X, peta.Start.Y].Type = 3;
+                            dynamic_peta[accessing.Item1.X, accessing.Item1.Y].Type = 0;
+                            dynamic_peta[dynamic_peta.Start.X, dynamic_peta.Start.Y].Type = 2;
+                            dynamic_peta.Start = dynamic_peta[accessing.Item1.X, accessing.Item1.Y];
                             repeat = false;
                             Console.WriteLine("Masuk");
                             stack.Clear();
-                            stack.Push((a.Start, accessing.Item2));
+                            stack.Push((dynamic_peta.Start, accessing.Item2));
                         }
                         else
                         {
@@ -62,45 +63,45 @@ namespace Tubes2_TreasureHunter
                     else
                     {
                         stack.Clear();
-                        stack.Push((a.Start, accessing.Item2));
+                        stack.Push((dynamic_peta.Start, accessing.Item2));
                     }
                 }
                 else //type ==2
                 {
                     try
                     {
-                        if (a[accessing.Item1.X, accessing.Item1.Y - 1].Type > 1 && !a[accessing.Item1.X, accessing.Item1.Y - 1].Accessed)
+                        if (dynamic_peta[accessing.Item1.X, accessing.Item1.Y - 1].Type > 1 && !dynamic_peta[accessing.Item1.X, accessing.Item1.Y - 1].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X, accessing.Item1.Y - 1], temp));
+                            stack.Push((dynamic_peta[accessing.Item1.X, accessing.Item1.Y - 1], temp));
                         }
                     }
                     catch (Exception e) { }
                     try
                     {
-                        if (a[accessing.Item1.X, accessing.Item1.Y + 1].Type > 1 && !a[accessing.Item1.X, accessing.Item1.Y + 1].Accessed)
+                        if (dynamic_peta[accessing.Item1.X, accessing.Item1.Y + 1].Type > 1 && !dynamic_peta[accessing.Item1.X, accessing.Item1.Y + 1].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X, accessing.Item1.Y + 1], temp));
+                            stack.Push((dynamic_peta[accessing.Item1.X, accessing.Item1.Y + 1], temp));
                         }
                     }
                     catch (Exception e) { }
                     try
                     {
-                        if (a[accessing.Item1.X - 1, accessing.Item1.Y].Type > 1 && !a[accessing.Item1.X - 1, accessing.Item1.Y].Accessed)
+                        if (dynamic_peta[accessing.Item1.X - 1, accessing.Item1.Y].Type > 1 && !dynamic_peta[accessing.Item1.X - 1, accessing.Item1.Y].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X - 1, accessing.Item1.Y], temp));
+                            stack.Push((dynamic_peta[accessing.Item1.X - 1, accessing.Item1.Y], temp));
                         }
                     }
                     catch (Exception e) { }
                     try
                     {
-                        if (a[accessing.Item1.X + 1, accessing.Item1.Y].Type > 1 && !a[accessing.Item1.X + 1, accessing.Item1.Y].Accessed)
+                        if (dynamic_peta[accessing.Item1.X + 1, accessing.Item1.Y].Type > 1 && !dynamic_peta[accessing.Item1.X + 1, accessing.Item1.Y].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X + 1, accessing.Item1.Y], temp));
+                            stack.Push((dynamic_peta[accessing.Item1.X + 1, accessing.Item1.Y], temp));
                         }
                     }
                     catch (Exception e) { }
                 }
-                a[accessing.Item1.X, accessing.Item1.Y].Accessed = true;
+                dynamic_peta[accessing.Item1.X, accessing.Item1.Y].Accessed = true;
             }
         }
     }
