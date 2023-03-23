@@ -14,7 +14,7 @@ namespace Tubes2_TreasureHunter
         public Form1()
         {
             InitializeComponent();
-            RouteFinder routeFinder = new BFS();
+            RouteFinder routeFinder = new DFS();
             //Peta test = new Peta();
             //test.readFrom("test.txt");
             //test.PrintPeta();
