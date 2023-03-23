@@ -71,7 +71,7 @@ namespace Tubes2_TreasureHunter
                     {
                         if (a[accessing.Item1.X, accessing.Item1.Y - 1].Type > 1 && !a[accessing.Item1.X, accessing.Item1.Y - 1].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X, accessing.Item1.Y - 1], accessing.Item2));
+                            stack.Push((a[accessing.Item1.X, accessing.Item1.Y - 1], temp));
                         }
                     }
                     catch (Exception e) { }
@@ -79,7 +79,7 @@ namespace Tubes2_TreasureHunter
                     {
                         if (a[accessing.Item1.X, accessing.Item1.Y + 1].Type > 1 && !a[accessing.Item1.X, accessing.Item1.Y + 1].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X, accessing.Item1.Y + 1], accessing.Item2));
+                            stack.Push((a[accessing.Item1.X, accessing.Item1.Y + 1], temp));
                         }
                     }
                     catch (Exception e) { }
@@ -87,7 +87,7 @@ namespace Tubes2_TreasureHunter
                     {
                         if (a[accessing.Item1.X - 1, accessing.Item1.Y].Type > 1 && !a[accessing.Item1.X - 1, accessing.Item1.Y].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X - 1, accessing.Item1.Y], accessing.Item2));
+                            stack.Push((a[accessing.Item1.X - 1, accessing.Item1.Y], temp));
                         }
                     }
                     catch (Exception e) { }
@@ -95,7 +95,7 @@ namespace Tubes2_TreasureHunter
                     {
                         if (a[accessing.Item1.X + 1, accessing.Item1.Y].Type > 1 && !a[accessing.Item1.X + 1, accessing.Item1.Y].Accessed)
                         {
-                            stack.Push((a[accessing.Item1.X + 1, accessing.Item1.Y], accessing.Item2));
+                            stack.Push((a[accessing.Item1.X + 1, accessing.Item1.Y], temp));
                         }
                     }
                     catch (Exception e) { }
