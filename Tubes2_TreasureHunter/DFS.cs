@@ -17,17 +17,20 @@ namespace Tubes2_TreasureHunter
 
         //DFS prioritize desc right down left up
 
-        public override void Solve()
+        public override void Solve(bool TSP)
         {
             Peta a = peta;
-            stack = new stack<(Cell, Route)>();
+            bool repeat = TSP;
+            a.Copy(peta);
+            stack = new Stack<(Cell, Route)>();
             stack.Push((a.Start, solusi));
             int count = peta.NumTreasure;
 
             while (count > 0 && stack.Count > 0)
             {
                 (Cell, Route) accessing = stack.Pop();
-                accessing.Item2.AddCell(accessing.Item1);
+                Route temp = new Route(accessing.Item2);
+                temp.AddCell(accessing.Item1);
                 if (!(stack.Peek().Item1.Accessed))
                 {
                     if (accessing.Item1.Type == 3)
@@ -36,18 +39,33 @@ namespace Tubes2_TreasureHunter
                         a[accessing.Item1.X, accessing.Item1.Y].Type = 0;
                         a[a.Start.X, a.Start.Y].Type = 2;
                         a.Start = a[accessing.Item1.X, accessing.Item1.Y];
-                        //empty stack
+
                         a.Inaccess();
                         if (count <= 0)
                         {
-                            solusi = accessing.Item2;
+                            if (repeat)
+                            {
+                                count++;
+                                a[peta.Start.X, peta.Start.Y].Type = 3;
+                                a[accessing.Item1.X, accessing.Item1.Y].Type = 0;
+                                a[a.Start.X, a.Start.Y].Type = 2;
+                                a.Start = a[accessing.Item1.X, accessing.Item1.Y];
+                                repeat = false;
+                                Console.WriteLine("Masuk");
+                                stack.Clear();
+                                stack.Push((a.Start, accessing.Item2));
+                            }
+                            else
+                            {
+                                solusi.Copy(temp);
+                                stack.Clear();
+                            }
                         }
                         else
                         {
                             stack.Clear();
                             stack.Push((a.Start, accessing.Item2));
                         }
-
                     }
                     else //type ==2
                     {
@@ -69,6 +87,8 @@ namespace Tubes2_TreasureHunter
                         }
                     }
                 }
+
+                a[accessing.Item1.X, accessing.Item1.Y].Accessed = true;
             }
         }
     }
