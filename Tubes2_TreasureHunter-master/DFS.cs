@@ -14,9 +14,7 @@ namespace MazeHunter
             solusi = new Route();
             DynamicPeta = new Peta();
         }
-        private Peta DynamicPeta { get; set; }
-        private Stack<(Cell, Route)> stack { get; set; }
-
+        private Stack<(Cell, Route)> stack;
         //DFS prioritize desc right down left up
 
         public override void Solve(bool TSP)
@@ -105,18 +103,6 @@ namespace MazeHunter
                 }
                 DynamicPeta[accessing.Item1.X, accessing.Item1.Y].Accessed = true;
             }
-        }
-        public int SumNodesChecked()
-        {
-            int sumNodes = 0;
-            for (int i = 0; i < DynamicPeta.GetNumRow(); i++)
-            {
-                for (int j = 0; j < DynamicPeta.GetNumCol(); j++)
-                {
-                    sumNodes += DynamicPeta.GetValue(j, i).NumAccessed;
-                }
-            }
-            return sumNodes;
         }
     }
 }

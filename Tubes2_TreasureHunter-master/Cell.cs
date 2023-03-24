@@ -75,17 +75,6 @@ namespace MazeHunter
             get { return type; }
             set { type = value; }
         }
-
-        private List<Tuple<int, int>> precedence;
-        public List<Tuple<int, int>> Precedence
-        {
-            get { return precedence; } 
-            set { precedence = value; }
-        }
-        public void PrintCell()
-        {
-            Console.Write($" <{x},{y}> ");
-        }
     }
 
 
