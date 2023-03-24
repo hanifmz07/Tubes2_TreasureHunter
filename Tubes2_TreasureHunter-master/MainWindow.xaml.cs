@@ -48,6 +48,18 @@ namespace MazeHunter
             MainGrid.Children.Add(MapGrid);
         }
 
+        public void ResetMapColor()
+        {
+            var childEnumerator = MapGrid.Children.GetEnumerator();
+            while (childEnumerator.MoveNext())
+            {
+                Border child = (Border)childEnumerator.Current;
+                if (child.Background != Brushes.Black)
+                {
+                    ((Border)childEnumerator.Current).Background = Brushes.White;
+                }
+            }
+        }
         private void OpenFileButton(object sender, RoutedEventArgs e)
         {
 
@@ -138,6 +150,7 @@ namespace MazeHunter
 
         private void VisualiseButton(object sender, RoutedEventArgs e)
         {
+            ResetMapColor();
             if (IsBFS)
             {
                 try
