@@ -7,7 +7,9 @@
 
 ## Description
 
-Maze Solver merupakan aplikasi pencarian treasure dalam suatu labirin. Program akan memvisualisasikan hasilnya, dilengkapi dengan rute arah gerak, frekuensi pengecekan node, panjang rute yang terbentuk, dan execution time.
+Maze Solver merupakan aplikasi pencarian treasure dalam suatu labirin. Program akan memvisualisasikan hasilnya, dilengkapi dengan rute arah gerak, frekuensi pengecekan node, panjang rute yang terbentuk, dan execution time. 
+
+Prioritas arah traversal adalah Kanan - Bawah - Kiri - Atas
 
 PERHATIAN: Fitur time per step (animasi) belum diimplementasi meskipun sudah ada di UI
 
