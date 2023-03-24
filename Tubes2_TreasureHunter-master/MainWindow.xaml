@@ -22,7 +22,7 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox TextChanged="TextBox_TextChanged" Name="FileName">FileName.txt</TextBox>
+                    <TextBox Name="FileName">FileName.txt</TextBox>
                     <Button Grid.Column="1" Click="OpenFileButton">Open File</Button>
                 </Grid>
                 <Label Margin="0,10,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="18">Select Algorithm</Label>
@@ -46,7 +46,7 @@
                     <TextBox Grid.Column="1" TextWrapping="Wrap" Text="{Binding ElementName=Time, Path=Value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
                 </Grid>
                 <Button Content="Visualise" HorizontalAlignment="Center" FontFamily="Segoe UI" Background="SlateBlue" Foreground="NavajoWhite" VerticalAlignment="Top" Width="72" Margin="0,20,0,0" Height="25" Click="VisualiseButton"/>
-                <Grid Margin="0,50,0,0" Height="80">
+                <Grid Margin="0,50,0,0" Height="100">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="3*" Name="RouteBox"/>

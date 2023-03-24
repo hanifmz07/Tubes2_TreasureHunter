@@ -30,7 +30,8 @@ namespace MazeHunter
         public bool IsTSP { get; set; }
         public bool ToggleAnimation { get; set; }
         public static Grid MapGrid { get; set; }
-        private String filePath { get; set; }
+
+        private String filePath;
 
 
         public MainWindow()
@@ -123,20 +124,15 @@ namespace MazeHunter
                 } 
                 catch (InvalidCharacterException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Input file not valid. The only valid characters for the input file are K, R, T, X.");
 
                 }
                 catch (RowInconsistentException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Input file not valid. The shape of the map must be a rectangle/square with a size of N x M.");
                 }
                 
             }
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
         }
 
@@ -144,63 +140,79 @@ namespace MazeHunter
         {
             if (IsBFS)
             {
-                var watch = new System.Diagnostics.Stopwatch();
-                BFS routeFinder = new BFS();
-                routeFinder.readFrom(filePath);
-
-                watch.Start();
-
-                routeFinder.Solve(IsTSP);
-
-                watch.Stop();
-
-                string RouteString = routeFinder.Solusi.GetRouteDisplay();
-                RouteTaken.Text = RouteString;
-                ExecutionTime.Text = String.Format("{0} ms", watch.ElapsedMilliseconds);
-                StepsTaken.Text = (routeFinder.Solusi.JalurAccessor.Count - 1).ToString();
-                NodesChecked.Text = (routeFinder.SumNodesChecked()).ToString();
-
-                foreach (Cell cell in routeFinder.Solusi.JalurAccessor)
+                try
                 {
-                    var childEnumerator = MapGrid.Children.GetEnumerator();
-                    while (childEnumerator.MoveNext())
+                    var watch = new System.Diagnostics.Stopwatch();
+                    BFS routeFinder = new BFS();
+                
+                    routeFinder.readFrom(filePath);
+
+                    watch.Start();
+
+                    routeFinder.Solve(IsTSP);
+
+                    watch.Stop();
+
+                    string RouteString = routeFinder.Solusi.GetRouteDisplay();
+                    RouteTaken.Text = RouteString;
+                    ExecutionTime.Text = String.Format("{0} ms", watch.ElapsedMilliseconds);
+                    StepsTaken.Text = (routeFinder.Solusi.JalurAccessor.Count - 1).ToString();
+                    NodesChecked.Text = (routeFinder.SumNodesChecked() - 1).ToString();
+
+                    foreach (Cell cell in routeFinder.Solusi.JalurAccessor)
                     {
-                        Border child = (Border)childEnumerator.Current;
-                        if (Grid.GetColumn(child) == cell.X && Grid.GetRow(child) == cell.Y)
+                        var childEnumerator = MapGrid.Children.GetEnumerator();
+                        while (childEnumerator.MoveNext())
                         {
-                            ((Border)childEnumerator.Current).Background = Brushes.LightGreen;
+                            Border child = (Border)childEnumerator.Current;
+                            if (Grid.GetColumn(child) == cell.X && Grid.GetRow(child) == cell.Y)
+                            {
+                                ((Border)childEnumerator.Current).Background = Brushes.LightGreen;
+                            }
                         }
                     }
+                } 
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please select the input file first.");
                 }
-            } else if (IsDFS)
+            } 
+            else if (IsDFS)
             {
-                var watch = new System.Diagnostics.Stopwatch();
-                DFS routeFinder = new DFS();
-                routeFinder.readFrom(filePath);
-
-                watch.Start();
-
-                routeFinder.Solve(IsTSP);
-
-                watch.Stop();
-
-                string RouteString = routeFinder.Solusi.GetRouteDisplay();
-                RouteTaken.Text = RouteString;
-                ExecutionTime.Text = String.Format("{0} ms", watch.ElapsedMilliseconds);
-                StepsTaken.Text = (routeFinder.Solusi.JalurAccessor.Count - 1).ToString();
-                NodesChecked.Text = (routeFinder.SumNodesChecked()).ToString();
-
-                foreach (Cell cell in routeFinder.Solusi.JalurAccessor)
+                try
                 {
-                    var childEnumerator = MapGrid.Children.GetEnumerator();
-                    while (childEnumerator.MoveNext())
+                    var watch = new System.Diagnostics.Stopwatch();
+                    DFS routeFinder = new DFS();
+                    routeFinder.readFrom(filePath);
+
+                    watch.Start();
+
+                    routeFinder.Solve(IsTSP);
+
+                    watch.Stop();
+
+                    string RouteString = routeFinder.Solusi.GetRouteDisplay();
+                    RouteTaken.Text = RouteString;
+                    ExecutionTime.Text = String.Format("{0} ms", watch.ElapsedMilliseconds);
+                    StepsTaken.Text = (routeFinder.Solusi.JalurAccessor.Count - 1).ToString();
+                    NodesChecked.Text = (routeFinder.SumNodesChecked() - 1).ToString();
+
+                    foreach (Cell cell in routeFinder.Solusi.JalurAccessor)
                     {
-                        Border child = (Border)childEnumerator.Current;
-                        if (Grid.GetColumn(child) == cell.X && Grid.GetRow(child) == cell.Y)
+                        var childEnumerator = MapGrid.Children.GetEnumerator();
+                        while (childEnumerator.MoveNext())
                         {
-                            ((Border)childEnumerator.Current).Background = Brushes.LightGreen;
+                            Border child = (Border)childEnumerator.Current;
+                            if (Grid.GetColumn(child) == cell.X && Grid.GetRow(child) == cell.Y)
+                            {
+                                ((Border)childEnumerator.Current).Background = Brushes.LightGreen;
+                            }
                         }
                     }
+                } 
+                catch
+                {
+                    MessageBox.Show("Please select the input file first.");
                 }
             } 
             else
