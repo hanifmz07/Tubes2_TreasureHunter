@@ -1,0 +1,84 @@
+﻿<Window x:Class="MazeHunter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeHunter"
+        mc:Ignorable="d"
+        Title="Treasure Hunter" Height="700" Width="1200">
+    <Grid Margin="10" Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Border Height="600" Width="600" BorderThickness="2" BorderBrush="Black" Grid.Column="1" Margin="10"></Border>
+        <Border Grid.Column="0" Margin="0" BorderThickness="2" BorderBrush="Blue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <StackPanel>
+                <Border>
+                    <Label HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="18" >Input File</Label>
+                </Border>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox TextChanged="TextBox_TextChanged" Name="FileName">FileName.txt</TextBox>
+                    <Button Grid.Column="1" Click="OpenFileButton">Open File</Button>
+                </Grid>
+                <Label Margin="0,10,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="18">Select Algorithm</Label>
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Grid.Column="0" Content="BFS" HorizontalAlignment="Center" Name="BFSToggle" IsChecked="{Binding IsBFS}"/>
+                    <RadioButton Grid.Column="1" Content="DFS" HorizontalAlignment="Center" Name="DFSToggle" IsChecked="{Binding IsDFS}"/>
+                </Grid>
+                <CheckBox Content="TSP" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Name="TSPToggle" IsChecked="{Binding IsTSP}"/>
+                <Label Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="18">Time per Step (ms)</Label>
+                <CheckBox Content="Toggle Animation per Step" Margin="0,10,0,0" HorizontalAlignment="Center" Name="AnimationToggle" IsChecked="{Binding ToggleAnimation}"></CheckBox>
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider Grid.Column="0"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="170" Minimum="10" Maximum="1000" TickFrequency="10" IsSnapToTickEnabled="True" Name="Time"/>
+                    <TextBox Grid.Column="1" TextWrapping="Wrap" Text="{Binding ElementName=Time, Path=Value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40"/>
+                </Grid>
+                <Button Content="Visualise" HorizontalAlignment="Center" FontFamily="Segoe UI" Background="SlateBlue" Foreground="NavajoWhite" VerticalAlignment="Top" Width="72" Margin="0,20,0,0" Height="25" Click="VisualiseButton"/>
+                <Grid Margin="0,50,0,0" Height="80">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*" Name="RouteBox"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10,0,0,0" VerticalAlignment="Center">Route:</Label>
+                    <TextBlock Grid.Column="1" Margin="5,5,5,5" VerticalAlignment="Center" Name="RouteTaken" TextWrapping="Wrap"></TextBlock>
+                </Grid>
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10,0,0,0">Nodes: </Label>
+                    <TextBlock Grid.Column="1" Margin="5,5,5,5" VerticalAlignment="Center" Name="NodesChecked"></TextBlock>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10,0,0,0">Steps:</Label>
+                    <TextBlock Grid.Column="1" Margin="5,5,5,5" VerticalAlignment="Center" Name="StepsTaken"></TextBlock>
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="10,0,0,0">Execution Time:</Label>
+                    <TextBlock Grid.Column="1" Margin="5,5,5,5" VerticalAlignment="Center" Name="ExecutionTime"></TextBlock>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
