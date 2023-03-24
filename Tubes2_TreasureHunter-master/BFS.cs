@@ -13,13 +13,13 @@ namespace MazeHunter
     internal class BFS : RouteFinder
     {
 
-        private Peta DynamicPeta { get; set; }
+        
         public BFS(){
             peta = new Peta();
             solusi = new Route();
             DynamicPeta = new Peta();
         }
-        private Queue<(Cell, Route)> queue { get; set; }
+        private Queue<(Cell, Route)> queue;
 
 
         //BFS prioritize desc right down left up
@@ -112,17 +112,6 @@ namespace MazeHunter
             }
         }
 
-        public int SumNodesChecked()
-        {
-            int sumNodes = 0;
-            for (int i = 0; i < DynamicPeta.GetNumRow(); i++)
-            {
-                for (int j = 0; j < DynamicPeta.GetNumCol(); j++)
-                {
-                    sumNodes += DynamicPeta.GetValue(j, i).NumAccessed;
-                }
-            }
-            return sumNodes;
-        }
+        
     }
 }

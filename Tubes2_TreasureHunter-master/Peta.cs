@@ -132,26 +132,6 @@ namespace MazeHunter
                 }
             }
         }
-        public void PrintPeta()
-        {
-            foreach (List<Cell> line in map)
-            {
-                foreach (Cell cell in line)
-                    Console.Write($" {cell.Type} ");
-                Console.WriteLine();
-            }
-        }
-
-        public void PrintPetaCoor()
-        {
-            foreach (List<Cell> line in map)
-            {
-                foreach (Cell cell in line)
-                    Console.Write($" <{cell.X},{cell.Y}> ");
-                Console.WriteLine();
-            }
-        }
-
         public void Copy(Peta other)
         {
             map.Clear();

@@ -40,17 +40,6 @@ namespace MazeHunter
             jalur.Add(cell);
         }
 
-        public void PrintRoute()
-        {
-            
-            foreach (Cell cell in jalur)
-            {
-                cell.PrintCell();
-                
-            }
-            Console.WriteLine(" ");
-        }
-
         public string GetRouteDisplay()
         {
             string route = "";
