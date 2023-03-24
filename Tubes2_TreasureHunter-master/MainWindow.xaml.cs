@@ -57,7 +57,6 @@ namespace MazeHunter
             if (openFileDialog.ShowDialog() == true) {
                 //Get the path of specified file
                 filePath = openFileDialog.FileName;
-                MessageBox.Show(filePath);
 
                 //Read the contents of the file into a stream
                 var fileStream = openFileDialog.OpenFile();
