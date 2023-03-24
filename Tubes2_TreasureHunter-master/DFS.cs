@@ -77,17 +77,17 @@ namespace MazeHunter
                     catch (Exception e) { }
                     try
                     {
-                        if (DynamicPeta[accessing.Item1.X, accessing.Item1.Y + 1].Type > 1 && !DynamicPeta[accessing.Item1.X, accessing.Item1.Y + 1].Accessed)
+                        if (DynamicPeta[accessing.Item1.X - 1, accessing.Item1.Y].Type > 1 && !DynamicPeta[accessing.Item1.X - 1, accessing.Item1.Y].Accessed)
                         {
-                            stack.Push((DynamicPeta[accessing.Item1.X, accessing.Item1.Y + 1], temp));
+                            stack.Push((DynamicPeta[accessing.Item1.X - 1, accessing.Item1.Y], temp));
                         }
                     }
                     catch (Exception e) { }
                     try
                     {
-                        if (DynamicPeta[accessing.Item1.X - 1, accessing.Item1.Y].Type > 1 && !DynamicPeta[accessing.Item1.X - 1, accessing.Item1.Y].Accessed)
+                        if (DynamicPeta[accessing.Item1.X, accessing.Item1.Y + 1].Type > 1 && !DynamicPeta[accessing.Item1.X, accessing.Item1.Y + 1].Accessed)
                         {
-                            stack.Push((DynamicPeta[accessing.Item1.X - 1, accessing.Item1.Y], temp));
+                            stack.Push((DynamicPeta[accessing.Item1.X, accessing.Item1.Y + 1], temp));
                         }
                     }
                     catch (Exception e) { }
