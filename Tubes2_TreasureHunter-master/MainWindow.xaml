@@ -52,7 +52,9 @@
                         <ColumnDefinition Width="3*" Name="RouteBox"/>
                     </Grid.ColumnDefinitions>
                     <Label Margin="10,0,0,0" VerticalAlignment="Center">Route:</Label>
-                    <TextBlock Grid.Column="1" Margin="5,5,5,5" VerticalAlignment="Center" Name="RouteTaken" TextWrapping="Wrap"></TextBlock>
+                    <ScrollViewer Grid.Column="1">
+                        <TextBlock Margin="5,5,5,5" VerticalAlignment="Center" Name="RouteTaken" TextWrapping="Wrap"></TextBlock>
+                    </ScrollViewer>
                 </Grid>
                 <Grid Margin="0,20,0,0">
                     <Grid.ColumnDefinitions>
